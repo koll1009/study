@@ -9,6 +9,5 @@ Study Conference
 .. toctree::
    :glob:
    :numbered:
-   :maxdepth: 3
 
    dpdk/*

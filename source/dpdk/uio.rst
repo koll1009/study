@@ -110,4 +110,34 @@ There is another marco to register PMD driver to **vm_bus**.
 Register Device
 ---------------
 
-In eal initialization, it will scan all the devices
+In eal initialization, it will scan all the devices.
+
+.. image:: ../../images/source/dpdk/register_device.png
+
+**rte_bus_scan** will scan all the buses in *rte_bus_list* recursively.
+
+.. image:: ../../images/source/dpdk/bus_scan.png
+
+**rte_bus_probe** will find all uio devices and allocate **rte_eth_dev**
+and set corresponding callbacks.
+
+.. image:: ../../images/source/dpdk/bus_probe.png
+
+.. code:: 
+
+    static int
+    eth_hn_dev_init(struct rte_eth_dev *eth_dev)
+    {
+        ...
+        eth_dev->dev_ops = &hn_eth_dev_ops;
+        eth_dev->rx_queue_count = hn_dev_rx_queue_count;
+        eth_dev->rx_descriptor_status = hn_dev_rx_queue_status;
+        eth_dev->tx_descriptor_status = hn_dev_tx_descriptor_status;
+        eth_dev->tx_pkt_burst = &hn_xmit_pkts;
+        eth_dev->rx_pkt_burst = &hn_recv_pkts;
+        ...
+    }
+
+
+
+

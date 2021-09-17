@@ -1,0 +1,58 @@
+@startuml
+title register_device
+start
+:rte_eal_init;
+split
+    :rte_bus_scan;
+split again
+    :rte_bus_probe;
+end split
+end
+@enduml
+
+@startuml
+title bus_scan
+start
+:rte_bus_scan;
+while (FOREACH(bus, &rte_bus_list));
+  :bus->scan();
+  :rte_vmbus_scan();
+  note right: vmbus callback
+  :vmbus_scan_one();
+  note right: /sys/bus/vmbus/devices
+  :vmbus_add_device();
+  note right: add to rte_vmbus_bus.device_list
+end while
+:rte_bus_probe;
+end
+@enduml
+
+@startuml
+title bus_probe
+start
+:rte_bus_probe;
+while (foreach(bus, &rte_bus_list));
+  :bus->probe();
+  :rte_vmbus_probe;
+  note right: vmbus probe callback
+  while (foreach(dev, &rte_vmbus_bus.device_list))
+    :vmbus_probe_all_drivers;
+    while (foreach(drv, &rte_vmbus_bus.driver_list))
+      :vmbus_probe_one_driver;
+      if (vmbus_match()) then (no)
+        break
+      else (yes)
+        :rte_vmbus_map_device;
+        :dr->probe(dr, dev);
+        :eth_hn_probe;
+        note left: uio_hv_generic callback
+        :eth_dev_vmbus_allocate;
+        note left: each uio device alloc a rte_eth_dev
+        :eth_hn_dev_init;
+        note left: set callbacks
+      endif
+    end while
+  end while
+end while
+end
+@enduml 

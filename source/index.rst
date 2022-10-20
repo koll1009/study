@@ -1,8 +1,8 @@
-Study Conference
+study conference
 ================
 
 .. toctree::
    :glob:
-   :numbered:
 
    dpdk.rst
+   tcpip.rst

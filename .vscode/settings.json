@@ -2,5 +2,6 @@
     "restructuredtext.confPath": "${workspaceFolder}/source",
     "plantuml.exportOutDir": "images",
     "plantuml.exportFormat": "png",
-    "plantuml.exportSubFolder": false
+    "plantuml.exportSubFolder": false,
+    "esbonio.sphinx.confDir": "${workspaceFolder}/source"
 }

@@ -1,0 +1,5 @@
+@startuml ethernet_initialization
+leattach -> if_attach: 初始化函数列表、mac addr
+if_attach -> ether_attach: 设备对象入列表，2层地址初始化
+ether_addach: 
+@enduml

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: study
+  labels:
+    koll: study
+spec:
+  containers:
+  - name: study-container
+    image: koll1009/study:test
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8888

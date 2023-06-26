@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-study
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-study-pod
+  template:
+    metadata:
+      labels:
+        app: my-study-pod
+    spec:
+      containers:
+      - name: myapp
+        image: koll1009/study:test
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8888

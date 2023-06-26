@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-study-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-study-pod
+  ports:
+  - port: 80
+    targetPort: 8888
+  externalTrafficPolicy: Local

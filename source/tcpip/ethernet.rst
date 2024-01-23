@@ -11,7 +11,7 @@ RARP Protocol: from hardware to IP addresses
 初始化
 ------
 
-作为cpu startup的一部分，内核查找任何连接的网络设备。一旦一个设备被识别，
+作为cpu startup的一部分,内核查找任何连接的网络设备。一旦一个设备被识别,
 专用的初始化函数会被调用。
 
 设备驱动为network interface初始化一个专用 **ifnet** 结构，对于以太网来说，

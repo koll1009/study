@@ -7,3 +7,4 @@ study conference
    dpdk.rst
    tcpip.rst
    linux.rst
+   kubernets.rst

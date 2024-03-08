@@ -33,3 +33,8 @@ Worker node consists of 3 components
 #. **kubelet**: The Kubelet is responsible for managing the deployment of pods to Kubernetes nodes. It receives commands from the API server and instructs the container runtime to start or stop containers as needed.
 #. **kubeproxy**: A network proxy running on each Kubernetes node. It is responsible for maintaining network rules on each node. Network rules enable network communication between nodes and pods. Kube-proxy can directly forward traffic or use the operating system packet filter layer. 
 #. **container runtime**: The software layer responsible for running containers. There are several container runtimes supported by Kubernetes, including Containerd, CRI-O, Docker, and other Kubernetes Container Runtime Interface (CRI) implementations.
+
+Reference
+---------
+
+`参考文档 <https://learn-k8s-from-scratch.readthedocs.io/en/latest/>`_

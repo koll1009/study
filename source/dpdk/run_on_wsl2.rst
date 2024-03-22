@@ -76,3 +76,10 @@ NOTICE
 
 If you want to debug the DPDK examples using remote-wsl, it's supposed to set up the network in bridge mode.
 Otherwise, when you subsitude the driver by uio_hv_generic, the remote-wsl will disconnect.
+
+And if you want to run kni examples, configure param carrier
+
+.. code-block:: bash
+
+   #!/bin/bash
+   sudo insmod /pathof/kni.ko carrier=on
